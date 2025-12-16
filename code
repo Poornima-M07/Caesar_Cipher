@@ -1,0 +1,31 @@
+#letters
+lower = "abcdefghijklmnopqrstuvwxyz"
+upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#function
+def caesar(text, shift):
+    result = ""
+    for letter in text:
+        try:
+            #lowercase letters
+            result += lower[lower.index(letter) + shift]
+        except:
+            try:
+                #uppercase letters
+                result += upper[upper.index(letter) + shift]
+            except:
+                #other characters unchanged
+                result += letter
+    return result
+
+#main program
+print("Caesar Cipher")
+mode = input("Type e to encrypt, d to decrypt: ")
+text = input("Enter your message: ")
+shift = int(input("Enter shift number: "))
+
+#decrypt
+if mode == "d":
+    shift = -shift
+# Show result
+print("Result:", caesar(text, shift))
